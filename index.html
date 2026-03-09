@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provincial Department of Revenue - NWP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffcc00;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo { font-weight: bold; font-size: 1.2rem; }
+
+        .lang-switch button {
+            background: var(--accent-color);
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            color: white;
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        /* Sections */
+        .container { padding: 50px 10%; }
+        h2 { color: var(--primary-color); border-bottom: 2px solid var(--accent-color); display: inline-block; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        /* Contact Table from Image */
+        .table-container { overflow-x: auto; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th { background-color: var(--primary-color); color: white; }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 50px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo" id="nav-title">වයඹ පළාත් ආදායම් දෙපාර්තමේන්තුව</div>
+    <div class="lang-switch">
+        <button onclick="changeLang('si')">SI</button>
+        <button onclick="changeLang('en')">EN</button>
+        <button onclick="changeLang('ta')">TA</button>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1 id="hero-title">වයඹ සංවර්ධනයේ කොටස්කරුවන් වෙමු</h1>
+    <p id="hero-address">03 වන මහළ, පළාත් සභා කාර්යාල සංකීර්ණය, කුරුණෑගල.</p>
+</section>
+
+<div class="container">
+    <h2 id="vision-title">අපගේ දැක්ම</h2>
+    <p id="vision-text">“වයඹ පළාත වෙනුවෙන් සකස් කර ඇති ආදායම් උපාය මාර්ග පිළිබඳ නීති ක්‍රියාත්මක කිරීම තුළින් වයඹ ජනතාවට උසස් ජීවන තත්ත්වයක් ළඟා කර දී වයඹ සංවර්ධනයේ කොටස්කරුවන් වීම“</p>
+    
+    <h2 id="mission-title">අපගේ මෙහෙවර</h2>
+    <p id="mission-text">“වයඹ ජනතාවට වඩාත් උසස් ජීවන තත්ත්වයක් උදාකරදීමේ කර්තව්යයයට උරදීම සඳහා බදු ගෙවන ජනතාවට හා ආර්ථිකයට වඩාත් ප්රතිලාභ ලැබෙන අයුරින් ආදායම් උපාය මාර්ගයන්ට අදාල බලතල ක්‍රිවානට නැංවීම වෙනුවෙන් ඇප කැප වී ක්‍රියා කිරීම.”</p>
+</div>
+
+<div class="container" style="background: #f1f1f1;">
+    <h2 id="dept-title">අපගේ අංශ</h2>
+    <div class="grid" id="dept-list">
+        <div class="card"><i class="fas fa-info-circle"></i> තොරතුරු අංශය</div>
+        <div class="card"><i class="fas fa-calculator"></i> තක්සේරු අංශය</div>
+        <div class="card"><i class="fas fa-id-card"></i> ලියාපදිංචි අංශය</div>
+        <div class="card"><i class="fas fa-money-bill-wave"></i> හිග බදු අය අංශය</div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 id="contact-title">කාර්ය මණ්ඩල සම්බන්ධතා</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>නම</th>
+                    <th>තනතුර</th>
+                    <th>අභ්‍යන්තර</th>
+                    <th>දුරකථන අංකය</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ආර්.ඩී.එස්. ගුණවර්ධන මයා</td>
+                    <td>පළාත් ආදායම් කොමසාරිස්</td>
+                    <td>4600</td>
+                    <td>037-2223806</td>
+                </tr>
+                <tr>
+                    <td>ආර්.එම්.එස්.එන්. රත්නායක මිය</td>
+                    <td>ගණකාධිකාරී</td>
+                    <td>4620</td>
+                    <td>037-2223983</td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <h2 id="download-title">භාගත කිරීම්</h2>
+    <div class="grid">
+        <a href="#" class="download-btn"><i class="fas fa-file-download"></i> Refund Application</a>
+        <a href="#" class="download-btn"><i class="fas fa-book"></i> මුදල් ප්‍රඥප්තිය (සිංහල)</a>
+        <a href="#" class="download-btn"><i class="fas fa-book"></i> நாணய சாசனம் (தமிழ்)</a>
+    </div>
+</div>
+
+<footer>
+    <p>Email: revdepnwp@gmail.com</p>
+    <p>&copy; 2026 Provincial Department of Revenue - NWP. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const data = {
+        si: {
+            navTitle: "වයඹ පළාත් ආදායම් දෙපාර්තමේන්තුව",
+            heroTitle: "වයඹ සංවර්ධනයේ කොටස්කරුවන් වෙමු",
+            visionTitle: "අපගේ දැක්ම",
+            contactTitle: "කාර්ය මණ්ඩල සම්බන්ධතා"
+            // මෙතනට අනෙක් සිංහල පරිවර්තන දාන්න
+        },
+        en: {
+            navTitle: "Provincial Department of Revenue - NWP",
+            heroTitle: "Partners in NWP Development",
+            visionTitle: "Our Vision",
+            contactTitle: "Staff Contacts"
+            // මෙතනට ඉංග්‍රීසි පරිවර්තන දාන්න
+        },
+        ta: {
+            navTitle: "மாகாண இறைவரித் திணைக்களம் - වයඹ",
+            heroTitle: "NWP அபிவிருத்தியில் பங்குதாரர்களாவோம்",
+            visionTitle: "எமது நோக்கு",
+            contactTitle: "தொடர்பு விபரங்கள்"
+        }
+    };
+
+    function changeLang(lang) {
+        document.getElementById('nav-title').innerText = data[lang].navTitle;
+        document.getElementById('hero-title').innerText = data[lang].heroTitle;
+        document.getElementById('vision-title').innerText = data[lang].visionTitle;
+        document.getElementById('contact-title').innerText = data[lang].contactTitle;
+        // අනෙක් ඒවත් මේ විදිහටම update කරන්න පුළුවන්
+    }
+</script>
+
+</body>
+</html>
