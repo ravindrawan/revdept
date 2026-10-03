@@ -1,0 +1,283 @@
+/* ===================================================================
+   Responsive Breakpoints & Mobile Drawer Stylesheet
+   Department of Provincial Revenue - North Western Province
+   =================================================================== */
+
+/* Tablet & Smaller Desktop (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .main-wrapper {
+        grid-template-columns: 2.2fr 1fr;
+        gap: 20px;
+    }
+    
+    .header-title h1 {
+        font-size: 24px;
+    }
+    
+    .header-title h3 {
+        font-size: 15px;
+    }
+    
+    .nav-link {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+/* Tablets & Mobile Devices (max-width: 991px) */
+@media (max-width: 991px) {
+    .mobile-toggle {
+        display: block;
+    }
+
+    /* Mobile toggle animated icon */
+    .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -7px);
+    }
+
+    /* Mobile Navigation Drawer */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        max-width: 85vw;
+        height: 100vh;
+        background: rgba(10, 25, 47, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 85px 24px 40px 24px;
+        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5);
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1005;
+        overflow-y: auto;
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    /* Backdrop overlay when mobile menu opens */
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 1004;
+    }
+
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 15px 10px;
+        font-size: 16px;
+        justify-content: space-between;
+    }
+
+    .nav-link.active {
+        border-radius: var(--radius-sm);
+    }
+
+    /* Mobile Dropdown */
+    .dropdown-menu {
+        position: static;
+        display: none;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        border: none;
+        border-radius: var(--radius-sm);
+        margin: 5px 0 10px 0;
+        box-shadow: none;
+        padding-left: 10px;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+    }
+
+    .portal-link {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    /* Main Grid becomes 1 Column */
+    .main-wrapper {
+        grid-template-columns: 1fr;
+        width: 92%;
+        margin: 25px auto 40px auto;
+    }
+
+    .container {
+        width: 92%;
+        margin: 25px auto 40px auto;
+    }
+}
+
+/* Mobile Screens (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Header Stacking */
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 18px 4%;
+    }
+
+    .header-logo-left img,
+    .header-logo-right img {
+        height: 70px;
+    }
+
+    .header-title h1 {
+        font-size: 22px;
+    }
+
+    .header-title h3 {
+        font-size: 14px;
+    }
+
+    /* Language bar centering */
+    .language-bar {
+        justify-content: center;
+        padding: 8px 4%;
+    }
+
+    .lang-tab {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    /* Cards & Components */
+    .card {
+        padding: 22px 18px;
+        border-radius: var(--radius-lg);
+    }
+
+    .page-header h2 {
+        font-size: 25px;
+    }
+
+    .section-title {
+        font-size: 19px;
+    }
+
+    .vision-mission {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .account-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Downloads on Mobile */
+    .download-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 18px 20px;
+    }
+
+    .file-info {
+        width: 100%;
+    }
+
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Footer */
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 35px 0 25px 0;
+    }
+}
+
+/* Extra Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .header-logo-left img,
+    .header-logo-right img {
+        height: 60px;
+    }
+
+    .header-title h1 {
+        font-size: 19px;
+    }
+
+    .header-title h3 {
+        font-size: 13px;
+    }
+
+    .commissioner-img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .commissioner-name {
+        font-size: 18px;
+    }
+
+    .message-text {
+        padding: 16px 18px;
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 18px 14px;
+    }
+
+    .form-card {
+        padding: 20px 16px;
+    }
+}

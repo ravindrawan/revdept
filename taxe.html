@@ -1,0 +1,762 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxes and Services - North Western Provincial Revenue Department</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Dynamic Sky Wave Background */
+        body {
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #0f172a, #38ef7d);
+            background-size: 400% 400%;
+            animation: skyWaveGradient 12s ease infinite;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        @keyframes skyWaveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .top-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #00c6ff, #0072ff);
+        }
+
+        /* Header Layout */
+        .header {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header img {
+            height: 85px;
+            width: auto;
+            filter: drop-shadow(0px 4px 10px rgba(0, 242, 254, 0.4));
+        }
+
+        .header-title {
+            text-align: center;
+        }
+
+        .header-title h1 {
+            font-size: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffffff, #80d0c7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #38ef7d;
+            margin-top: 4px;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-bottom: 2px solid rgba(0, 198, 255, 0.6);
+            padding: 8px 0;
+        }
+
+        .nav-container {
+            width: 95%;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            display: inline-block;
+        }
+
+        /* Modernized Navigation Link Boxes */
+        .nav-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 10px 18px;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.2), rgba(0, 114, 255, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            border-color: rgba(0, 198, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 198, 255, 0.25);
+        }
+
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            border-color: #00f2fe;
+            box-shadow: 0 6px 20px rgba(0, 198, 255, 0.45);
+            font-weight: 700;
+        }
+
+        /* Modern Language Switcher Styles */
+        .language-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(2, 6, 23, 0.6);
+            padding: 5px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .lang-tab {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .lang-tab:hover {
+            color: #38ef7d;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-tab.active {
+            background: linear-gradient(135deg, #38ef7d 0%, #11998e 100%);
+            color: #0f172a;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(56, 239, 125, 0.4);
+        }
+
+        /* Container & Page Content Styles */
+        .container {
+            max-width: 1200px;
+            width: 92%;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .service-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border-radius: 18px;
+            padding: 35px;
+            margin-bottom: 35px;
+            border: 1px solid #dbeafe;
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.05);
+        }
+
+        .section-title {
+            color: #0052D4;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #00c6ff;
+            display: inline-block;
+        }
+
+        .section-content p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section-content ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .section-content li {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        /* Tables Styling */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #cbd5e1;
+            padding: 14px 18px;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* Account Card Details */
+        .account-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 30px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00c6ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .account-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0, 198, 255, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .account-card h3 {
+            color: #00f2fe;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 12px;
+        }
+
+        .account-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .account-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 198, 255, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .account-item:hover {
+            transform: translateY(-5px);
+            border-color: #38ef7d;
+        }
+
+        .account-title {
+            font-size: 15px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        .bank-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .account-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #38ef7d;
+            letter-spacing: 1px;
+            background: rgba(56, 239, 125, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .sub-box {
+            background: #ffffff;
+            border-left: 4px solid #00c6ff;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .sub-box h5 {
+            color: #0f172a;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .footer-bottom {
+            background: rgba(15, 23, 42, 0.95);
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 900px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+
+            .nav-links {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .nav-item {
+                text-align: center;
+            }
+
+            .language-bar {
+                margin-top: 10px;
+            }
+
+            .account-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-stripe"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <img src="sl.png" alt="Sri Lanka Government Emblem">
+
+        <div class="header-title">
+            <h1>Provincial Revenue Department</h1>
+            <h3>North Western Province</h3>
+        </div>
+
+        <img src="OIP (6).webp" alt="North Western Provincial Council Emblem">
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="index-en.html" class="nav-link">Home</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="aboutuse.html" class="nav-link">About Us</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="taxe.html" class="nav-link active">Taxes & Services</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="downloade.html" class="nav-link">Downloads</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="gallerye.html" class="nav-link">News & Gallery</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="contactuse.html" class="nav-link">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Language Switcher Bar -->
+            <div class="language-bar">
+                <div class="lang-container">
+                    <a href="home.html" class="lang-tab active">සිංහල</a>
+                    <a href="index-en.html" class="lang-tab">English</a>
+                    <a href="index-ta.html" class="lang-tab">தமிழ்</a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="page-header">
+            <h2>Taxes & Services</h2>
+        </div>
+
+        <!-- Section 1: Introduction to Stamp Duty -->
+        <section class="service-section">
+
+            <h3 class="section-title">
+                1. Stamp Duty - Introduction
+            </h3>
+
+            <div class="section-content">
+
+                <p>
+                    Stamp duty is collected under Section 37 of the North Western Province Finance Statute No. 08 of 1990.
+                </p>
+
+                <p>
+                    <strong>Stamp duty is charged on:</strong>
+                </p>
+
+                <ul>
+                    <li>
+                        Every instrument relating to the transfer of immovable property situated within the North Western Province.
+                    </li>
+
+                    <li>
+                        Every document presented or filed in legal proceedings instituted in any court established by law within the North Western Province of Sri Lanka.
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+        <!-- Section 2: Tax Rates -->
+        <section class="service-section">
+
+            <h3 class="section-title">
+                2. Tax Rates
+            </h3>
+
+            <div class="section-content">
+
+                <table class="data-table">
+
+                    <thead>
+                        <tr>
+                            <th>Type of Property / Instrument</th>
+                            <th>Value / Limit</th>
+                            <th>Applicable Tax Rate</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td rowspan="2">
+                                <strong>Sale and Transfer of Immovable Property</strong>
+                            </td>
+
+                            <td>
+                                Property value up to Rs. 100,000/=
+                            </td>
+
+                            <td>
+                                <strong>
+                                    Rs. 3 for every Rs. 100 or part thereof of the value
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                For the value exceeding Rs. 100,000/=
+                            </td>
+
+                            <td>
+                                <strong>
+                                    Rs. 4 for every Rs. 100 or part thereof of the value
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2">
+                                <strong>Gift Deeds (Gifts)</strong>
+                            </td>
+
+                            <td>
+                                Property value up to Rs. 50,000/=
+                            </td>
+
+                            <td>
+                                <strong>
+                                    Rs. 3 for every Rs. 100 or part thereof of the value
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                For the value exceeding Rs. 50,000/=
+                            </td>
+
+                            <td>
+                                <strong>
+                                    Rs. 2 for every Rs. 100 or part thereof of the value
+                                </strong>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </section>
+
+        <!-- Section 3: Determination of Immovable Property Value -->
+        <section class="service-section">
+
+            <h3 class="section-title">
+                3. Determination of the Value of Immovable Property
+            </h3>
+
+            <div class="section-content">
+
+                <div class="sub-box">
+
+                    <h5>
+                        1. Determination of Value for Stamp Duty on the Sale of Property
+                    </h5>
+
+                    <p>
+                        In relation to any property other than immovable property transferred as a gift, and in relation to any relevant date, the value shall be the price that, in the opinion of the valuer, could reasonably be obtained for that property in the open market on that date.
+                    </p>
+
+                </div>
+
+                <div class="sub-box">
+
+                    <h5>
+                        2. Determination of Value for Stamp Duty on a Gift Instrument
+                    </h5>
+
+                    <p>
+                        <strong>
+                            A. In relation to any immovable property acquired by the transferor on or before 31.03.1977 and subsequently gifted:
+                        </strong>
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            The price which, in the opinion of the valuer, could have been obtained for the property if it had been sold in the open market on 31.03.1977, plus the cost of any improvement, alteration or addition made to the property after 31.03.1977 and before the date of the instrument by which the property was gifted,
+                            <strong>or</strong>
+                        </li>
+
+                        <li>
+                            The price which, in the opinion of the valuer, could have been obtained for the property if it had been sold in the open market on the date of the instrument by which the property was gifted.
+                        </li>
+
+                    </ul>
+
+                    <p>
+                        <em>
+                            → The lower of the above two amounts shall be taken as the value.
+                        </em>
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <strong>
+                            B. In relation to any immovable property acquired by the transferor after 31.03.1977 and subsequently gifted:
+                        </strong>
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            The price which, in the opinion of the valuer, could have been obtained for the property if it had been sold in the open market on the date on which the transferor acquired the property, plus the cost of any improvement, alteration or addition made to the property after its acquisition by the transferor and before the date of the instrument by which the property was gifted,
+                            <strong>or</strong>
+                        </li>
+
+                        <li>
+                            The price which, in the opinion of the valuer, could have been obtained for the property if it had been sold in the open market on the date of the instrument by which the property was gifted.
+                        </li>
+
+                    </ul>
+
+                    <p>
+                        <em>
+                            → The lower of the above two amounts shall be taken as the value.
+                        </em>
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 4: Account Details -->
+        <section class="account-card">
+
+            <h3>
+                💳 Account Details
+            </h3>
+
+            <div class="account-grid">
+
+                <div class="account-item">
+
+                    <div class="account-title">
+                        Turnover Tax Collection Account
+                    </div>
+
+                    <div class="bank-name">
+                        People's Bank
+                    </div>
+
+                    <div class="account-number">
+                        012100130415995
+                    </div>
+
+                </div>
+
+                <div class="account-item">
+
+                    <div class="account-title">
+                        Stamp Duty Collection Account
+                    </div>
+
+                    <div class="bank-name">
+                        People's Bank
+                    </div>
+
+                    <div class="account-number">
+                        012100160415994
+                    </div>
+
+                </div>
+
+                <div class="account-item">
+
+                    <div class="account-title">
+                        Application Fees (including Rs. 250/= and other fees applicable under the Statute)
+                    </div>
+
+                    <div class="bank-name">
+                        People's Bank
+                    </div>
+
+                    <div class="account-number">
+                        012100180415993
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-bottom">
+        &copy; 2026 Provincial Revenue Department - North Western Province.
+        All Rights Reserved.
+    </div>
+
+</body>
+</html>
+```

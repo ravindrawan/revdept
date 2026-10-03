@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Department of Provincial Revenue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Dynamic Sky Wave Background */
+        body {
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #0f172a, #38ef7d);
+            background-size: 400% 400%;
+            animation: skyWaveGradient 12s ease infinite;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        @keyframes skyWaveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .top-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #00c6ff, #0072ff);
+        }
+
+        /* Header Layout with Logos */
+        .header {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header img {
+            height: 85px;
+            width: auto;
+            filter: drop-shadow(0px 4px 10px rgba(0, 242, 254, 0.4));
+        }
+
+        .header-title {
+            text-align: center;
+        }
+
+        .header-title h1 {
+            font-size: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffffff, #80d0c7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #38ef7d;
+            margin-top: 4px;
+        }
+
+        /* Main Navigation Bar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 2px solid #00c6ff;
+        }
+
+        .nav-container {
+            width: 95%;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 16px 18px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+            background: rgba(0, 198, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Language Bar Styling */
+        .lang-container {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin: 0 2px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-link:hover {
+            background: rgba(0, 198, 255, 0.2);
+            color: #00f2fe;
+            border-color: rgba(0, 198, 255, 0.4);
+        }
+
+        .lang-link.current-lang {
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        /* Dropdown Styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 12px 12px;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .dropdown-menu a {
+            color: #e2e8f0;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: #ffffff;
+            padding-left: 25px;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Page Interior Content */
+        .container {
+            max-width: 1200px;
+            width: 92%;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Section Cards */
+        .about-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border-radius: 18px;
+            padding: 35px;
+            margin-bottom: 35px;
+            border: 1px solid #dbeafe;
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.05);
+            scroll-margin-top: 90px;
+        }
+
+        .section-title {
+            color: #0052D4;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #00c6ff;
+            display: inline-block;
+        }
+
+        .section-content p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section-content ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .section-content li {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .org-chart-img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Tables Styling */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #cbd5e1;
+            padding: 12px 16px;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .footer-bottom {
+            background: rgba(15, 23, 42, 0.95);
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; }
+            .nav-item { width: 100%; text-align: center; }
+            .lang-container { margin-left: 0; width: 100%; justify-content: center; padding: 10px 0; }
+            .dropdown-menu { position: relative; width: 100%; }
+            .data-table th, .data-table td { padding: 8px 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-stripe"></div>
+
+    <header class="header">
+        <img src="sl.png" alt="State Emblem of Sri Lanka">
+        <div class="header-title">
+            <h1>Department of Provincial Revenue</h1>
+            <h3>North Western Province</h3>
+        </div>
+        <img src="OIP (6).webp" alt="North Western Provincial Council Logo">
+    </header>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-item"><a href="index-en.html" class="nav-link">Home</a></div>
+
+            <div class="nav-item">
+                <a href="about-en.php" class="nav-link active">About Us ▼</a>
+                <div class="dropdown-menu">
+                    <a href="#background">1. Departmental Background</a>
+                    <a href="#duties">2. Institutional Role</a>
+                    <a href="#revenue">3. Stamp Duty Revenue</a>
+                    <a href="#org-chart">4. Organizational Chart</a>
+                    <a href="#staff">5. Staff Information</a>
+                </div>
+            </div>
+
+            <div class="nav-item"><a href="taxe.html" class="nav-link">Taxes & Services</a></div>
+            <div class="nav-item"><a href="downloade.html" class="nav-link">Downloads</a></div>
+            <div class="nav-item"><a href="gallerye.html" class="nav-link">News & Gallery</a></div>
+            <div class="nav-item"><a href="contactuse.html" class="nav-link">Contact Us</a></div>
+
+            <div class="lang-container">
+                <a href="home.html" class="lang-link">සිංහල</a>
+                <a href="index-en.html" class="lang-link current-lang">English</a>
+                <a href="about-ta.php" class="lang-link">தமிழ்</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="page-header">
+            <h2>About Us</h2>
+        </div>
+
+        <section id="background" class="about-section">
+            <h3 class="section-title">1. Departmental Background</h3>
+            <div class="section-content">
+                <p>The 13th Amendment to the Constitution of Sri Lanka, enacted in 1987, and the Provincial Councils Act No. 42 of 1987 established the provincial councils in Sri Lanka. Accordingly, the North Western Provincial Council was established in 1988, and to implement the North Western Provincial Council financial statute No. 8 of 1990 approved by the council, it was launched by the North Western Provincial Department of Revenue with effect from 01.01.1991, from the revenues mentioned in items 36:1 to 36:20 in Schedule 9 of List 1 under Article 157A(1) of the 13th Amendment to the Constitution. The responsibility for collecting taxes, fees, and stamp duties and reporting related revenue was assigned to the Commissioner of Provincial Revenue. Additionally, the North Western Provincial Council is authorized to delegate the powers under the statutes listed below, which had not yet been enacted, to the Provincial Department of Revenue to implement those powers and handle the collection and regulation of related taxes and fees.</p>
+                
+                <ul>
+                    <li>Taxes on mineral rights</li>
+                    <li>Issuance of licenses for pawnbroking businesses</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="duties" class="about-section">
+            <h3 class="section-title">2. Institutional Role</h3>
+            <div class="section-content">
+                <p>The Commissioner of Provincial Revenue is responsible for regulating, monitoring, and collecting revenues in accordance with the annual revenue estimates prepared under these revenue heads. Accordingly, the overall institutional responsibilities of the department are as follows:</p>
+                <ul>
+                    <li>Collection, accounting, control, and supervision of provincial revenue.</li>
+                    <li>Timely collection and crediting to the Provincial Fund of taxes and fees assigned to the Revenue Department as per the Annual Financial Statement passed by the North Western Provincial Council.</li>
+                    <li>Educating taxpayers through media channels, interviews, and field inspections to encourage voluntary tax compliance based on self-assessments.</li>
+                    <li>Registering tax evaders into the tax system based on information received from the public and external organizations.</li>
+                    <li>Prompt recovery of taxes, fees, and outstanding default arrears without delay.</li>
+                </ul>
+                <p>To perform these duties effectively, a dedicated staff including the Commissioner of Provincial Revenue, Deputy Commissioners, and Assessors works towards delivering an efficient service.</p>
+            </div>
+        </section>
+
+        <section id="revenue" class="about-section">
+            <h3 class="section-title">3. Growth of Stamp Duty Revenue</h3>
+            <div class="section-content">
+                <p>From 1991 to 2010, Business turnover tax was the primary revenue source for the department. Following the suspension of turnover tax by the Central Government budget in 2011, the department shifted its primary focus to Part II of the North Western Provincial Finance Statute No. 08 of 1990, making the collection of stamp duty its main function.</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Normal Stamp Duty Revenue (LKR)</th>
+                            <th>Additional Stamp Duty Revenue (LKR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2011</td>
+                            <td>671 Million</td>
+                            <td>2.8 Million</td>
+                        </tr>
+                        <tr>
+                            <td>2015</td>
+                            <td>1,401 Million</td>
+                            <td>32 Million</td>
+                        </tr>
+                        <tr>
+                            <td>2020</td>
+                            <td>1,757 Million</td>
+                            <td>70 Million</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>4,216 Million</td>
+                            <td>287 Million</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="org-chart" class="about-section">
+            <h3 class="section-title">4. Organizational Chart</h3>
+            <div class="section-content">
+                <p>The administrative and operational workflow structure of the department is shown in the organizational chart below:</p>
+                <img src="stre.jpg" alt="Organizational Chart of the Department of Provincial Revenue" class="org-chart-img">
+            </div>
+        </section>
+
+        <section id="staff" class="about-section">
+            <h3 class="section-title">5. Staff Information</h3>
+            <div class="section-content">
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Designation</th>
+                            <th>Office Contact No.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mr. D.A.T. Hemachandra</td>
+                            <td>Commissioner</td>
+                            <td>0372223806</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. R.D.S. Gunawardhana</td>
+                            <td>Deputy Commissioner</td>
+                            <td>0372223984</td>
+                        </tr>
+                        <tr>
+                            <td>Mrs. R.M.S.N. Rathnayake</td>
+                            <td>Accountant</td>
+                            <td>0372223983</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. R.H.N. Wimalarathna</td>
+                            <td>Senior Assessor</td>
+                            <td>0372229509</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. D.A.P.J. Dedigamaarachchi</td>
+                            <td>Senior Assessor</td>
+                            <td>0373764271</td>
+                        </tr>
+                        <tr>
+                            <td>Mrs. T.M.U. Rathnayake</td>
+                            <td>Senior Assessor</td>
+                            <td>0373615011</td>
+                        </tr>
+                        <tr>
+                            <td>Mrs. T.M.K.K. Gunathilaka</td>
+                            <td>Senior Assessor</td>
+                            <td>0372223982</td>
+                        </tr>
+                        <tr>
+                            <td>Mrs. M.E.A. Sandarekha</td>
+                            <td>Senior Assessor</td>
+                            <td>0373971543</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. D.M.W.N. Wanninayake</td>
+                            <td>Senior Assessor</td>
+                            <td>0372223901</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. A.L.A.A.U. Gunawardhana</td>
+                            <td>Senior Assessor</td>
+                            <td>0372223902</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. S.M.R.K. Senevirathne</td>
+                            <td>Assessor</td>
+                            <td>0373144518</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. M.M.I. Samankumara</td>
+                            <td>Assessor</td>
+                            <td>0372227633</td>
+                        </tr>
+                        <tr>
+                            <td>Mr. B.S. Nimal</td>
+                            <td>Assessor</td>
+                            <td>0373618416</td>
+                        </tr>
+                        <tr>
+                            <td>Mrs. V.A.S.N. Thilakarathna</td>
+                            <td>Administrative Officer</td>
+                            <td>0372223981</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="footer-bottom">
+        &copy; <?php echo date("Y"); ?> Department of Provincial Revenue - North Western Province. All Rights Reserved.
+    </div>
+
+</body>
+</html>

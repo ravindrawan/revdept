@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Gallery - Department of Provincial Revenue (North Western Province)</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', 'Noto Sans Sinhala', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Dynamic Sky Wave Background */
+        body {
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #0f172a, #38ef7d);
+            background-size: 400% 400%;
+            animation: skyWaveGradient 12s ease infinite;
+            color: #cb11b8;
+            min-height: 100vh;
+        }
+
+        @keyframes skyWaveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Top Stripe */
+        .top-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #00c6ff, #0072ff);
+        }
+
+        /* Language Switcher Bar Styles */
+        .language-bar {
+            background: rgba(10, 25, 47, 0.95);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-tab {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 5px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .lang-tab:hover {
+            color: #00f2fe;
+            background: rgba(0, 198, 255, 0.2);
+            border-color: #00c6ff;
+            transform: translateY(-1px);
+        }
+
+        .lang-tab.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            border-color: #00c6ff;
+            box-shadow: 0 2px 10px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Clean Header Layout */
+        .header {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header img {
+            height: 85px;
+            width: auto;
+            filter: drop-shadow(0px 4px 10px rgba(0, 242, 254, 0.4));
+        }
+
+        .header-title {
+            text-align: center;
+        }
+
+        .header-title h1 {
+            font-size: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffffff, #80d0c7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #38ef7d;
+            margin-top: 4px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 2px solid #00c6ff;
+        }
+
+        .nav-container {
+            width: 95%;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 16px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+            background: rgba(0, 198, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Main Content Layout */
+        .main-wrapper {
+            width: 95%;
+            max-width: 1600px;
+            margin: 40px auto;
+        }
+
+        /* Glassmorphism Card Style */
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .section-title {
+            color: #0052D4;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #00c6ff;
+            display: inline-block;
+        }
+
+        /* News Section Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card {
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 198, 255, 0.25);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            font-size: 13px;
+            color: #ff0073;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #d2128f;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .news-desc {
+            font-size: 14px;
+            color: #15e718;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer-bottom {
+            background: rgba(15, 23, 42, 0.95);
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 50px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .language-bar {
+                justify-content: center;
+            }
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .nav-container {
+                flex-direction: column;
+            }
+            .nav-link {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-stripe"></div>
+
+    <!-- Language Selection Switcher Bar -->
+    <div class="language-bar">
+        <div class="lang-container">
+            <a href="home.html" class="lang-tab">සිංහල</a>
+            <a href="index-en.html" class="lang-tab active">English</a>
+            <a href="gallery-ta.html" class="lang-tab">தமிழ்</a>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <img src="sl.png" alt="State Emblem of Sri Lanka">
+        <div class="header-title">
+            <h1>Department of Provincial Revenue</h1>
+            <h3>North Western Province</h3>
+        </div>
+        <img src="OIP (6).webp" alt="North Western Provincial Council Logo">
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index-en.html" class="nav-link">Home</a>
+            <a href="aboutuse.html" class="nav-link">About Us</a>
+            <a href="taxe.html" class="nav-link">Taxes & Services</a>
+            <a href="downloade.html" class="nav-link">Downloads</a>
+            <a href="gallery.html" class="nav-link active">News & Gallery</a>
+            <a href="contactuse.html" class="nav-link">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+        <div class="card">
+            <h2 class="section-title">News & Press Articles</h2>
+            
+            <div class="news-grid">
+                
+                <!-- News Box 1: Land Values Project -->
+                <div class="news-card">
+                    <div class="news-content">
+                        <span class="news-date">Special Notice</span>
+                        <h3 class="news-title">Collection of Land Value Information in North Western Province for 2027</h3>
+                        <p class="news-desc">The Department of Provincial Revenue of the North Western Province has currently initiated the project for collecting land value information for the year 2027.</p>
+                    </div>
+                </div>
+
+                <!-- News Box 2: Assessment Officers Training with Image -->
+                <div class="news-card">
+                    <img src="training.jpg" alt="Training Program on Assessment">
+                    <div class="news-content">
+                        <span class="news-date">2026-08-08 and 2026-08-22</span>
+                        <h3 class="news-title">Training Program on Valuation & Assessment</h3>
+                        <p class="news-desc">A special training program on valuation was held on 2026-08-08 and 2026-08-22 at the Lichchhavi Hall of the North Western Provincial Council for Assessors and Tax Officers of the North Western Provincial Revenue Service.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-bottom">
+        &copy; <?php echo date("Y"); ?> Department of Provincial Revenue - North Western Province. All Rights Reserved.
+    </div>
+
+</body>
+</html>

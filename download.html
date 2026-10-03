@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>භාගත කිරීම් - වයඹ පළාත් ආදායම් දෙපාර්තමේන්තුව</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Sinhala', 'Poppins', sans-serif;
+        }
+
+        /* Dynamic Sky Wave Background */
+        body {
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #0f172a, #38ef7d);
+            background-size: 400% 400%;
+            animation: skyWaveGradient 12s ease infinite;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        @keyframes skyWaveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Top Accent Bar */
+        .top-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #00c6ff, #0072ff);
+        }
+
+        /* Language Switcher Bar */
+        .language-bar {
+            background: rgba(10, 25, 47, 0.95);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-tab {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 4px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .lang-tab:hover {
+            color: #00f2fe;
+            background: rgba(0, 198, 255, 0.2);
+            border-color: #00c6ff;
+        }
+
+        .lang-tab.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            border-color: #00c6ff;
+            box-shadow: 0 2px 10px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Header Section */
+        .header {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header img {
+            height: 85px;
+            width: auto;
+            filter: drop-shadow(0px 4px 10px rgba(0, 242, 254, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .header img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-title {
+            text-align: center;
+        }
+
+        .header-title h1 {
+            font-size: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffffff, #80d0c7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #38ef7d;
+            margin-top: 4px;
+        }
+
+        /* Navbar Links */
+        .navbar {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 2px solid #00c6ff;
+        }
+
+        .nav-container {
+            width: 95%;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 16px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+            background: rgba(0, 198, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Main Glass Container */
+        .container {
+            max-width: 1100px;
+            width: 92%;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .page-header h2::after {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff, #38ef7d);
+            bottom: 0;
+            left: 10%;
+            border-radius: 10px;
+        }
+
+        /* Downloads Cards Grid */
+        .download-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border-radius: 18px;
+            padding: 22px 28px;
+            border: 1px solid #dbeafe;
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 198, 255, 0.2);
+            border-color: #00c6ff;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .pdf-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 78, 80, 0.3);
+            flex-shrink: 0;
+        }
+
+        .pdf-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+        }
+
+        .file-details h3 {
+            font-size: 18px;
+            color: #0f172a;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .file-details span {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 198, 255, 0.5);
+        }
+
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
+
+        /* Footer */
+        .footer-bottom {
+            background: rgba(15, 23, 42, 0.95);
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .download-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .container {
+                padding: 25px;
+            }
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .language-bar {
+                justify-content: center;
+            }
+            .nav-container {
+                flex-direction: column;
+            }
+            .nav-link {
+                text-align: center;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-stripe"></div>
+
+    <!-- Language Selection Bar (භාෂා තේරීමේ තීරුව) -->
+    <div class="language-bar">
+        <div class="lang-container">
+            <a href="home.html" class="lang-tab active">සිංහල</a>
+            <a href="index-en.html" class="lang-tab">English</a>
+            <a href="download-ta.html" class="lang-tab">தமிழ்</a>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <img src="sl.png" alt="ශ්‍රී ලංකා රාජ්‍ය ලාංඡනය">
+        <div class="header-title">
+            <h1>පළාත් ආදායම් දෙපාර්තමේන්තුව</h1>
+            <h3>වයඹ පළාත</h3>
+        </div>
+        <img src="OIP (6).webp" alt="වයඹ පළාත් සභා ලාංඡනය">
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="nav-link">ප්‍රධාන මෙනුව</a>
+            <a href="aboutus.html" class="nav-link">අප ගැන</a>
+            <a href="tax.html" class="nav-link">බදු සහ සේවා</a>
+            <a href="download.html" class="nav-link active">භාගත කිරීම්</a>
+            <a href="gallery.html" class="nav-link">පුවත් සහ ගැලරිය</a>
+            <a href="contactus.html" class="nav-link">සම්බන්ධවන්න</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Glass Container -->
+    <div class="container">
+        <div class="page-header">
+            <h2>භාගත කිරීම් (Downloads)</h2>
+        </div>
+        
+        <div class="download-list">
+            
+            <!-- Document 1: මුදල් ප්‍රඥප්තිය -->
+            <div class="download-card">
+                <div class="file-info">
+                    <div class="pdf-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </div>
+                    <div class="file-details">
+                        <h3>වයඹ පළාත් මුදල් ප්‍රඥප්තිය</h3>
+                        <span>PDF Document</span>
+                    </div>
+                </div>
+                <a href="1990s.pdf.pdf" target="_blank" download class="download-btn">
+                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    භාගත කරන්න
+                </a>
+            </div>
+
+            <!-- Document 2: මත ඉල්ලුම් පත් -->
+            <div class="download-card">
+                <div class="file-info">
+                    <div class="pdf-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </div>
+                    <div class="file-details">
+                        <h3>මත ඉල්ලුම් පත්‍රය</h3>
+                        <span>PDF Form</span>
+                    </div>
+                </div>
+                <a href="ops.pdf" target="_blank" download class="download-btn">
+                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    භාගත කරන්න
+                </a>
+            </div>
+
+            <!-- Document 3: මුද්දර ගාස්තු ආපසු ඉල්ලීමේ අයදුම් පත්‍රය -->
+            <div class="download-card">
+                <div class="file-info">
+                    <div class="pdf-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    </div>
+                    <div class="file-details">
+                        <h3>මුද්දර ගාස්තු ආපසු ඉල්ලීමේ අයදුම් පත්‍රය</h3>
+                        <span>PDF Application Form</span>
+                    </div>
+                </div>
+                <a href="refs.pdf" target="_blank" download class="download-btn">
+                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    භාගත කරන්න
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-bottom">
+        &copy; <?php echo date("Y"); ?> පළාත් ආදායම් දෙපාර්තමේන්තුව - වයඹ පළාත. සියලුම හිමිකම් ඇවිරිණි.
+    </div>
+
+</body>
+</html>

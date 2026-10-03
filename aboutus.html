@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>අප ගැන - වයඹ පළාත් ආදායම් දෙපාර්තමේන්තුව</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Sinhala', 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Dynamic Sky Wave Background */
+        body {
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #0f172a, #38ef7d);
+            background-size: 400% 400%;
+            animation: skyWaveGradient 12s ease infinite;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        @keyframes skyWaveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .top-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #00c6ff, #0072ff);
+        }
+
+        /* Header Layout with Logos */
+        .header {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header img {
+            height: 85px;
+            width: auto;
+            filter: drop-shadow(0px 4px 10px rgba(0, 242, 254, 0.4));
+        }
+
+        .header-title {
+            text-align: center;
+        }
+
+        .header-title h1 {
+            font-size: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffffff, #80d0c7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #38ef7d;
+            margin-top: 4px;
+        }
+
+        /* Main Navigation Bar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 2px solid #00c6ff;
+        }
+
+        .nav-container {
+            width: 95%;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 16px 18px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+            background: rgba(0, 198, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Language Bar Styling */
+        .lang-container {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin: 0 2px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-link:hover {
+            background: rgba(0, 198, 255, 0.2);
+            color: #00f2fe;
+            border-color: rgba(0, 198, 255, 0.4);
+        }
+
+        .lang-link.current-lang {
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        /* Dropdown Styling for 'About' Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 12px 12px;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .dropdown-menu a {
+            color: #e2e8f0;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: #ffffff;
+            padding-left: 25px;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Page Interior Content */
+        .container {
+            max-width: 1200px;
+            width: 92%;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #d400c2, #4364F7, #6FB1FC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Flower Image Style */
+        .header-flower-img {
+            display: block;
+            max-width: 150px;
+            height: auto;
+            margin: 15px auto 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Section Cards */
+        .about-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border-radius: 18px;
+            padding: 35px;
+            margin-bottom: 35px;
+            border: 1px solid #dbeafe;
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.05);
+            scroll-margin-top: 90px;
+        }
+
+        .section-title {
+            color: #0052D4;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #00c6ff;
+            display: inline-block;
+        }
+
+        .section-content p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #334155;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section-content ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .section-content li {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .org-chart-img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Tables Styling */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #cbd5e1;
+            padding: 12px 16px;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .footer-bottom {
+            background: rgba(15, 23, 42, 0.95);
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; }
+            .nav-item { width: 100%; text-align: center; }
+            .lang-container { margin-left: 0; width: 100%; justify-content: center; padding: 10px 0; }
+            .dropdown-menu { position: relative; width: 100%; }
+            .data-table th, .data-table td { padding: 8px 10px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-stripe"></div>
+
+    <header class="header">
+        <img src="sl.png" alt="ශ්‍රී ලංකා රාජ්‍ය ලාංඡනය">
+        <div class="header-title">
+            <h1>පළාත් ආදායම් දෙපාර්තමේන්තුව</h1>
+            <h3>වයඹ පළාත</h3>
+        </div>
+        <img src="OIP (6).webp" alt="වයඹ පළාත් සභා ලාංඡනය">
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-item"><a href="home.html" class="nav-link">ප්‍රධාන මෙනුව</a></div>
+
+            <div class="nav-item">
+                <a href="aboutus.html" class="nav-link active">අප ගැන ▼</a>
+                <div class="dropdown-menu">
+                    <a href="#background">1. දෙපාර්තමේන්තු පසුබිම</a>
+                    <a href="#duties">2. ආයතනික කාර්යභාරය</a>
+                    <a href="#revenue">3. මුද්දර බදු ආදායම්</a>
+                    <a href="#org-chart">4. සංවිධාන සටහන</a>
+                    <a href="#staff">5. කාර්ය මණ්ඩලය</a>
+                </div>
+            </div>
+
+            <div class="nav-item"><a href="tax.html" class="nav-link">බදු සහ සේවා</a></div>
+            <div class="nav-item"><a href="download.html" class="nav-link">භාගත කිරීම්</a></div>
+            <div class="nav-item"><a href="gallery.html" class="nav-link">පුවත් සහ ගැලරිය</a></div>
+            <div class="nav-item"><a href="contactus.html" class="nav-link">සම්බන්ධවන්න</a></div>
+
+            <!-- Language Links (Sinhala | English | Tamil) -->
+            <div class="lang-container">
+                <a href="home.html" class="lang-link current-lang">සිංහල</a>
+                <a href="index-en.html" class="lang-link">English</a>
+                <a href="about-ta.php" class="lang-link">தமிழ்</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- "අප ගැන" ශීර්ෂය සහ ඒ යටතට flower.jpg එකතු කළ ස්ථානය -->
+        <div class="page-header">
+            <h2>අප ගැන</h2>
+            <img src="flower.jpg" alt="Flower Image" class="header-flower-img">
+        </div>
+
+        <!-- Section 1: දෙපාර්තමේන්තු පසුබිම -->
+        <section id="background" class="about-section">
+            <h3 class="section-title">1. දෙපාර්තමේන්තු පසුබිම</h3>
+            <div class="section-content">
+                <p>1987 වර්ෂයේදී සිදුකරන ලද ශ්‍රී ලංකා ආණ්ඩුක්‍රම ව්‍යවස්ථාවේ 13 වන සංශෝධනය සහ 1987 අංක 42 දරණ පළාත් සභා පනත මඟින් ශ්‍රී ලංකාවේ පළාත් සභා ස්ථාපිත කෙරිණි. මීට අනුකූලව 1988 වසරේදී වයඹ පළාත් සභාව පිහිටවනු ලැබූ අතර, 13වන ආණ්ඩුක්‍රම ව්‍යවස්ථා සංශෝධනයේ 157උ(1) අනු ව්‍යවස්ථාව යටතේ වන පළාත් සභා ලැයිස්තුවේ 9 වන උපලේඛනයේ 1වන ලැයිස්තුවේ 36:1 සිට 36:20 දක්වා සඳහන් කර ඇති ආදායම් අතරින් වයඹ පළාත් සභාව විසින් සම්මත කර ඇති 1990 අංක 8 දරණ වයඹ පළාත් මුදල් ප්‍රඥප්තිය ක්‍රියාත්මක කිරීම සඳහා වයඹ පළාත් ආදායම් දෙපාර්තමේන්තුව 1991.01.01 දින සිට ක්‍රියාත්මක වන පරිදි ආරම්භ කෙරුණි.</p>
+                <p>පිරිවැටුම් බදු හා මුද්දර ගාස්තු රැස්කිරීමේ වගකීම හා ඒ සම්බන්ධයෙන් ආදායම් ගණන් දීමේ වගකීම පළාත් ආදායම් කොමසාරිස්වරයා වෙත පැවරී ඇති අතර, ඊට අමතරව වයඹ පළාත් සභාව මඟින් මේ දක්වා ප්‍රඥප්ති පනවා නොමැති පහත සඳහන් ප්‍රඥප්ති පනවා එම ප්‍රඥප්තිවලට අදාල බලතල ක්‍රියාත්මක කිරීමට හා ඒ සම්බන්ධයෙන් වන බදු හා ගාස්තු අයකිරීමේ හා නියාමනය කිරීමේ වගකීම පළාත් ආදායම් දෙපාර්තමේන්තුව වෙත පැවරීමට නියමිතය:</p>
+                <ul>
+                    <li>ඛණිජ අයිතිවාසිකම් සම්බන්ධයෙන් බදු</li>
+                    <li>උකස් ව්‍යාපාර සඳහා බලපත්‍ර නිකුත් කිරීම</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: ආයතනික කාර්යභාරය -->
+        <section id="duties" class="about-section">
+            <h3 class="section-title">2. ආයතනික කාර්යභාරය</h3>
+            <div class="section-content">
+                <p>මෙම ආදායම් ශීර්ෂවලට අදාළව වාර්ෂිකව සකස් කරනු ලබන ආදායම් ඇස්තමේන්තුවලට අනුව ආදායම් රැස්කිරීමේ නියාමනය කිරීමේ හා අධීක්ෂණය කිරිමේ වගකීම පළාත් ආදායම් කොමසාරිස් වෙත පැවරී ඇත. ඒ අනුව දෙපාර්තමේන්තුවේ සමස්ත ආයතනික කාර්යභාරය පහත සඳහන් වේ:</p>
+                <ul>
+                    <li>පළාත් ආදායම් රැස්කිරිම, ගිණුම්ගත කිරීම, පාලනය හා අධීක්ෂණය.</li>
+                    <li>වයඹ පළාත් සභාව විසින් වාර්ෂිකව සම්මත කරනු ලබන මුදල් ප්‍රකාශය පරිදි ආදායම් දෙපාර්තමේන්තුවට පවරා ඇති බදු හා ගාස්තු ආදායම් නියමිත කාලය තුළ රැස් කිරීම හා පළාත් අරමුදලට බැර කිරීම.</li>
+                    <li>සන්නිවේදන මාධ්‍ය තුලින්, සම්මුඛ සාකච්ඡා තුළින්, ස්ථාන පරීක්ෂණ පැවැත්වීම තුළින් බදු ගෙවන්නන් දැනුවත් කිරීම, එමඟින් ස්වතක්සේරු මත බදු ගෙවිමට ස්වයං පෙළඹවීමක් ඇති කිරීම.</li>
+                    <li>මහජනයාගෙන් ලැබෙන තොරතුරු හා වෙනත් ආයතන මඟින් ලබාගනු ලබන තොරතුරු මත බදු පැහැර හරින්නන් බදු කාර්යයට ඇතුළත් කිරීම.</li>
+                    <li>නියමිත දිනට අදාළ බදු හා ගාස්තු සහ නොගෙවා පැහැර හරින ලද හිඟ බදු හා ගාස්තු ප්‍රමාදයකින් තොරව අයකර ගැනිම.</li>
+                </ul>
+                <p>මෙම කාර්ය භාරය ඉටුකිරීම සඳහා දෙපාර්තමේන්තුවේ පළාත් ආදායම් කොමසාරිස්වරයා, නියෝජ්‍ය කොමසාරිස්වරුන් හා තක්සේරුකරුවන් ඇතුළු කාර්ය මණ්ඩලයක් කාර්යක්ෂම සේවාවක් ලබාදීම වෙනුවෙන් කැපවී ක්‍රියාකරයි.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: මුද්දර බදු ආදායම් වර්ධනය -->
+        <section id="revenue" class="about-section">
+            <h3 class="section-title">3. මුද්දර බදු ආදායම් වර්ධනය</h3>
+            <div class="section-content">
+                <p>1991 වර්ෂයේ සිට 2010 වර්ෂය තෙක්ම දෙපාරිත්මේන්තුවේ ප්‍රධාන ආදායම පිරිවැටුම් බද්ද වූ අතර, 2011 වර්ෂයේ මධ්‍යම රජයේ අයවැය ලේඛනය මඟින් පිරිවැටුම් බද්ද අත්හිටුවීමත් සමඟ, 1990 අංක 8 දරණ වයඹ පළාත් මුදල් ප්‍රඥප්තියේ දෙවන කොටස සම්බන්ධයෙන් සම්පූර්ණ අවධානය යොමු කොට මුද්දර ගාස්තු අයකිරිම දෙපාර්තමේන්තුවේ ප්‍රමුඛ කාර්යය බවට පත්විය.</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>වර්ෂය</th>
+                            <th>සාමාන්‍ය මුද්දර බදු ආදායම (රුපියල්)</th>
+                            <th>අතිරේක මුද්දර බදු ආදායම (රුපියල්)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2011</td>
+                            <td>මිලියන 671</td>
+                            <td>මිලියන 2.8</td>
+                        </tr>
+                        <tr>
+                            <td>2015</td>
+                            <td>මිලියන 1401</td>
+                            <td>මිලියන 32</td>
+                        </tr>
+                        <tr>
+                            <td>2020</td>
+                            <td>මිලියන 1757</td>
+                            <td>මිලියන 70</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>මිලියන 4216</td>
+                            <td>මිලියන 287</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 4: සංවිධාන සටහන -->
+        <section id="org-chart" class="about-section">
+            <h3 class="section-title">4. සංවිධාන සටහන</h3>
+            <div class="section-content">
+                <p>දෙපාර්තමේන්තුවේ පරිපාලන සහ කාර්ය ප්‍රවාහයේ ව්‍යුහය පහත සංවිධාන සටහනින් දැක්වේ:</p>
+                <img src="str.jpg" alt="වයඹ පළාත් ආදායම් දෙපාර්තමේන්තු සංවිධාන සටහන" class="org-chart-img">
+            </div>
+        </section>
+
+        <!-- Section 5: කාර්ය මණ්ඩලය -->
+        <section id="staff" class="about-section">
+            <h3 class="section-title">5. කාර්ය මණ්ඩල තොරතුරු</h3>
+            <div class="section-content">
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>නම</th>
+                            <th>තනතුර</th>
+                            <th>කාර්යාල දු.ක. අංකය</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ඩී.ඒ.ටී. හේමචන්ද්‍ර මයා</td>
+                            <td>කොමසාරිස්</td>
+                            <td>0372223806</td>
+                        </tr>
+                        <tr>
+                            <td>ආර්.ඩී.එස්. ගුණවර්ධන මයා</td>
+                            <td>නියෝජ්‍ය කොමසාරිස්</td>
+                            <td>0372223984</td>
+                        </tr>
+                        <tr>
+                            <td>ආර්.එම්.එස්.එන්. රත්නායක මිය</td>
+                            <td>ගණකාධිකාරී</td>
+                            <td>0372223983</td>
+                        </tr>
+                        <tr>
+                            <td>ආර්.එච්.එන්. විමලරත්න මයා</td>
+                            <td>ජ්‍යේෂ්ඨ තක්සේරුකරු</td>
+                            <td>0372229509</td>
+                        </tr>
+                        <tr>
+                            <td>ඩී.ඒ.පී.ජේ. දැඩිගමආරච්චි මයා</td>
+                            <td>ජ්‍යේෂ්ඨ තක්සේරුකරු</td>
+                            <td>0373764271</td>
+                        </tr>
+                        <tr>
+                            <td>ටී.එම්.යූ. රත්නායක මිය</td>
+                            <td>ජ්‍යේෂ්ඨ තක්සේරුකරු</td>
+                            <td>0373615011</td>
+                        </tr>
+                        <tr>
+                            <td>ටී.එම්.කේ.කේ. ගුණතිලක මිය</td>
+                            <td>ජ්‍යේෂ්ඨ තක්සේරුකරු</td>
+                            <td>0372223982</td>
+                        </tr>
+                        <tr>
+                            <td>එම්.ඊ.ඒ. සඳරේඛා මිය</td>
+                            <td>ජ්‍යේෂ්ඨ තක්සේරුකරු</td>
+                            <td>0373971543</td>
+                        </tr>
+                        <tr>
+                            <td>ඩී.එම්.ඩබ්.එන්. වන්නිනායක මයා</td>
+                            <td>ජ්‍යේෂ්ඨ තක්සේරුකරු</td>
+                            <td>0372223901</td>
+                        </tr>
+                        <tr>
+                            <td>ඒ.එල්.ඒ.ඒ.යූ. ගුණවර්ධන මයා</td>
+                            <td>ජ්‍යේෂ්ඨ තක්සේරුකරු</td>
+                            <td>0372223902</td>
+                        </tr>
+                        <tr>
+                            <td>එස්.එම්.ආර්.කේ. සෙනෙවිරත්න මයා</td>
+                            <td>තක්සේරුකරු</td>
+                            <td>0373144518</td>
+                        </tr>
+                        <tr>
+                            <td>එම්.එම්.අයි. සමන්කුමාර මයා</td>
+                            <td>තක්සේරුකරු</td>
+                            <td>0372227633</td>
+                        </tr>
+                        <tr>
+                            <td>බී.එස්. නිමල් මයා</td>
+                            <td>තක්සේරුකරු</td>
+                            <td>0373618416</td>
+                        </tr>
+                        <tr>
+                            <td>වී.ඒ.එස්.එන්. තිලකරත්න මිය</td>
+                            <td>පරිපාලන නිලධාරී</td>
+                            <td>0372223981</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="footer-bottom">
+        &copy; <?php echo date("Y"); ?> පළාත් ආදායම් දෙපාර්තමේන්තුව - වයඹ පළාත. සියලුම හිමිකම් ඇවිරිණි.
+    </div>
+
+</body>
+</html>
